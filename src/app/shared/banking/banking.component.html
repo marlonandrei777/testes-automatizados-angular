@@ -4,15 +4,17 @@
 </div>
 
 <div>
-  <h3>Poupança: R$ {{ getPoupanca }}</h3>
+  <h3>Poupança: R$ <span id="get-poupanca">{{ getPoupanca }}</span></h3>
   <!-- o valor digitado no input eu pego pelo #sacar e dps passo para
   dentro da função setSacar usando sacar.value-->
-  <input type="text" #sacar>
-  <button (click)="setSacar(sacar.value)">Sacar</button>
+  <input id="input-sacar" type="text" #sacar>
+  <button id="sacar" (click)="setSacar(sacar.value)">Sacar</button>
 </div>
 
 <div>
-  <h3>Carteira: R$ {{ getCarteira }}</h3>
-  <input type="text" #depositar>
-  <button (click)="setDepositar(depositar.value)">Depositar</button>
+  <h3>Carteira: R$ <span id="get-carteira">{{ getCarteira }}</span></h3>
+  <input id="input-depositar" type="text" #depositar>
+  <button id="depositar" (click)="setDepositar(depositar.value)">Depositar</button>
 </div>
+
+<app-list></app-list>

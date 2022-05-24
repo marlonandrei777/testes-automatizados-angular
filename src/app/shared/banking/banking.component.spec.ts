@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ListComponent } from '../investiments/components/list/list.component';
 
 import { BankingComponent } from './banking.component';
 
@@ -9,7 +10,9 @@ describe('BankingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BankingComponent],
+      /* declarar os componentes q estão dentro do componente
+      principal para testes. */
+      declarations: [BankingComponent, ListComponent],
     }).compileComponents();
   });
 
@@ -69,5 +72,27 @@ describe('BankingComponent', () => {
 
     expect(component.getPoupanca).toEqual(10);
     expect(component.getCarteira).toEqual(50);
+  });
+
+  /* I = interface. entao aq vamos fazer o teste de interface */
+  it(`(I) setDepositar(): shoud tranfer carteira from poupanca`, () => {
+    let el = fixture.debugElement.nativeElement;
+
+    el.querySelector('#input-depositar').value = '10';
+    el.querySelector('#depositar').click();
+    fixture.detectChanges();
+
+    expect(el.querySelector('#get-poupanca').textContent).toEqual('20');
+  });
+
+  /* I = interface. entao aq vamos fazer o teste de interface */
+  it(`(I) setSacar(): shoud tranfer poupanca from carteira`, () => {
+    let el = fixture.debugElement.nativeElement;
+
+    el.querySelector('#input-sacar').value = '10';
+    el.querySelector('#sacar').click();
+    fixture.detectChanges();
+
+    expect(el.querySelector('#get-carteira').textContent).toEqual('60');
   });
 });
