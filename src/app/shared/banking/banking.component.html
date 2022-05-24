@@ -1,0 +1,18 @@
+<div>
+  <h1>Ola marlon</h1>
+  <p>Ag: 9999, CO: 99999-9</p>
+</div>
+
+<div>
+  <h3>Poupança: R$ {{ getPoupanca }}</h3>
+  <!-- o valor digitado no input eu pego pelo #sacar e dps passo para
+  dentro da função setSacar usando sacar.value-->
+  <input type="text" #sacar>
+  <button (click)="setSacar(sacar.value)">Sacar</button>
+</div>
+
+<div>
+  <h3>Carteira: R$ {{ getCarteira }}</h3>
+  <input type="text" #depositar>
+  <button (click)="setDepositar(depositar.value)">Depositar</button>
+</div>
