@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Investiments } from '../../model/investiments';
+import { ListInvestimentsService } from '../../services/list-investiments.service';
 
 @Component({
   selector: 'app-list',
@@ -7,26 +8,13 @@ import { Investiments } from '../../model/investiments';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  public investiments: Array<Investiments> = [
-    {
-      name: 'Itaú',
-      value: 100,
-    },
-    {
-      name: 'Nubank',
-      value: 100,
-    },
-    {
-      name: 'Pag',
-      value: 100,
-    },
-    {
-      name: 'Next',
-      value: 100,
-    },
-  ];
+  public investiments!: Array<Investiments>;
 
-  constructor() {}
+  constructor(private listInvestimentsService: ListInvestimentsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.listInvestimentsService
+      .list()
+      .subscribe((res) => (this.investiments = res));
+  }
 }
