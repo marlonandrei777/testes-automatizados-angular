@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListComponent } from '../investiments/components/list/list.component';
 
@@ -13,6 +14,7 @@ describe('BankingComponent', () => {
       /* declarar os componentes q estão dentro do componente
       principal para testes. */
       declarations: [BankingComponent, ListComponent],
+      imports: [HttpClientTestingModule],
     }).compileComponents();
   });
 
